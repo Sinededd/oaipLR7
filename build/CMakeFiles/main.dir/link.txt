@@ -1,0 +1,1 @@
+/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/main.dir/Task_3/main.cpp.o CMakeFiles/main.dir/Task_3/function.cpp.o -o main 

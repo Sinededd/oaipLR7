@@ -1,0 +1,5 @@
+/home/denis/study/oaip/LR7/build/CMakeFiles/edit_cache.dir
+/home/denis/study/oaip/LR7/build/CMakeFiles/rebuild_cache.dir
+/home/denis/study/oaip/LR7/build/Task_5/CMakeFiles/main.dir
+/home/denis/study/oaip/LR7/build/Task_5/CMakeFiles/edit_cache.dir
+/home/denis/study/oaip/LR7/build/Task_5/CMakeFiles/rebuild_cache.dir

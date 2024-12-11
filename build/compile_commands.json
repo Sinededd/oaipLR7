@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/denis/study/oaip/LR7/build/Task_5",
+  "command": "/usr/bin/g++   -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles/main.dir/main.cpp.o -c /home/denis/study/oaip/LR7/Task_5/main.cpp",
+  "file": "/home/denis/study/oaip/LR7/Task_5/main.cpp",
+  "output": "Task_5/CMakeFiles/main.dir/main.cpp.o"
+}
+]
