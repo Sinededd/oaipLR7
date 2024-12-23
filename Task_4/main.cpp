@@ -18,7 +18,7 @@ long long getOne_int(std::string text, long long start, long long end)
             std::cout << "Incorrect input. Try again" << std::endl << std::endl; // âûâîäèì ñîîáùåíèå îá îøèáêå
         }
         std::cout << text;
-        getline(std::cin, s); // ñ÷èòûâàåì ñòðîêó ïîâòîðíî
+        getline(std::cin, s); 
         variant = strtoll(s.c_str(), &endPtr, 0);
     }
 

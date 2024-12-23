@@ -2,18 +2,41 @@
 #include <vector>
 // Временная сложность O(1)
 
-bool is(int n, int l, int r, int bit)
+bool is(int n, int l, int r, int bit, int del)
 {
+    std::cout<<bit+1<<" из оставшихся рабов пьет: ";
     for (int i = l - 1; i <= r - 1; i++)
     {
         if (i & (1 << bit))
         {
+            std::cout<<i + del - 1<<" ";
             if (n - 1 == i)
             {
+                std::cout<<std::endl;
                 return true;
             }
         }
     }
+    std::cout<<std::endl;
+    return false;
+}
+
+bool is(int n, int l, int r, int bit)
+{
+    std::cout<<bit+1<<" из оставшихся рабов пьет: ";
+    for (int i = l - 1; i <= r - 1; i++)
+    {
+        if (i & (1 << bit))
+        {
+            std::cout<<i + 1<<" ";
+            if (n - 1 == i)
+            {
+                std::cout<<std::endl;
+                return true;
+            }
+        }
+    }
+    std::cout<<std::endl;
     return false;
 }
 
@@ -111,6 +134,25 @@ int main() // O(1)
             }
         }
     }
+
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << i + 1 << " раб пьет бочки:   ";
+        for (int j = 0; j < a[i].size(); j++)
+        {
+            std::cout << a[i][j] << " ";
+        }
+        std::cout << "\n\n";
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (rubs[i] == 0)
+        {
+            std::cout << i + 1 << " раб умер\n";
+        }
+    }
+
     std::vector<int> pa;
     int count = 0;
     for (int i = 0; i < 5; i++)
@@ -128,10 +170,10 @@ int main() // O(1)
         l = a[pa[0]][0];
         r = l + 16 - 1;
 
-        res = res | (is(n, l, r, 0) << 0);
-        res = res | (is(n, l, r, 1) << 1);
-        res = res | (is(n, l, r, 2) << 2);
-        res = res | (is(n, l, r, 3) << 3);
+        res = res | (is(n, l, r, 0, l) << 0);
+        res = res | (is(n, l, r, 1, l) << 1);
+        res = res | (is(n, l, r, 2, l) << 2);
+        res = res | (is(n, l, r, 3, l) << 3);
         res += l;
     }
     else if (count == 2)
@@ -216,11 +258,11 @@ int main() // O(1)
     {
         l = 1;
         r = 30;
-        res = res | (is(n - 210, l, r, 0) << 0);
-        res = res | (is(n - 210, l, r, 1) << 1);
-        res = res | (is(n - 210, l, r, 2) << 2);
-        res = res | (is(n - 210, l, r, 3) << 3);
-        res = res | (is(n - 210, l, r, 4) << 4);
+        res = res | (is(n - 210, l, r, 0, 211) << 0);
+        res = res | (is(n - 210, l, r, 1, 211) << 1);
+        res = res | (is(n - 210, l, r, 2, 211) << 2);
+        res = res | (is(n - 210, l, r, 3, 211) << 3);
+        res = res | (is(n - 210, l, r, 4, 211) << 4);
         res += 211;
     }
 

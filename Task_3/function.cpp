@@ -55,28 +55,20 @@ int sumNum(std::string &res, std::string x, std::string y, long long sysNum, int
     char res1Char;
     long long res2Int = 0;
 
-    res1Char = (x[0] + y[0] - 'A') + k;
-    k = 0;
-    if (res1Char > 'Z')
+    long long xint = x[0] - 'A' + strtoll((x.c_str() + 1), nullptr, 10) * 26;
+    long long yint = y[0] - 'A' + strtoll((y.c_str() + 1), nullptr, 10) * 26;
+    res2Int = xint + yint + k;
+    if(res2Int >= sysNum)
     {
-        res1Char -= 26;
-        res2Int = 1;
-    }
-    res2Int = res2Int + (strtoll((x.c_str() + 1), nullptr, 10) + strtoll((y.c_str() + 1), nullptr, 10));
-
-    if (res2Int > sysNum / 26)
-    {
-        res2Int -= sysNum / 26;
         k = 1;
+        res2Int -= sysNum;
     }
-    else if (res2Int == sysNum / 26)
+    else
     {
-        if (res1Char >= sysNum % 26 + 65)
-        {
-            res1Char = res1Char - (sysNum % 26 + 65) + 'A';
-            k = 1;
-        }
+        k = 0;
     }
+    res1Char = res2Int % 26 + 'A';
+    res2Int /= 26;
     res = res1Char + std::to_string(res2Int);
     return k;
 }
@@ -84,42 +76,61 @@ int sumNum(std::string &res, std::string x, std::string y, long long sysNum, int
 int subNum(std::string &res, std::string x, std::string y, long long sysNum, int k) //O(1)
 
 {
+    // char res1Char;
+    // long long res2Int = 0;
+
+    // res2Int = (strtoll((x.c_str() + 1), nullptr, 10) - strtoll((y.c_str() + 1), nullptr, 10));
+
+    // if (res2Int > 0)
+    // {
+    //     res1Char = (x[0] - y[0] + 'A') + k;
+    //     k = 0;
+    //     if (res1Char < 'A')
+    //     {
+    //         res2Int--;
+    //         res1Char += 26;
+    //     }
+    // }
+    // else if (res2Int == 0)
+    // {
+    //     res1Char = (x[0] - y[0] + 'A') + k;
+    //     if (res1Char < 'A')
+    //     {
+    //         res1Char = (sysNum % 26 + 65) - y[0] + x[0] + k;
+    //         res2Int = res2Int + sysNum / 26;
+    //         k = -1;
+    //     }
+    //     else
+    //     {
+    //         k = 0;
+    //     }
+    // }
+    // else
+    // {
+    //     res1Char = (sysNum % 26 + 65) - y[0] + x[0];
+    //     res2Int = res2Int + sysNum / 26;
+    //     k = -1;
+    // }
+
+    // res = res1Char + std::to_string(res2Int);
+    // return k;
     char res1Char;
     long long res2Int = 0;
 
-    res2Int = (strtoll((x.c_str() + 1), nullptr, 10) - strtoll((y.c_str() + 1), nullptr, 10));
-
-    if (res2Int > 0)
+    long long xint = x[0] - 'A' + strtoll((x.c_str() + 1), nullptr, 10) * 26;
+    long long yint = y[0] - 'A' + strtoll((y.c_str() + 1), nullptr, 10) * 26;
+    res2Int = xint - yint + k;
+    if(res2Int < 0)
     {
-        res1Char = (x[0] - y[0] + 'A') + k;
-        k = 0;
-        if (res1Char < 'A')
-        {
-            res2Int--;
-            res1Char += 26;
-        }
-    }
-    else if (res2Int == 0)
-    {
-        res1Char = (x[0] - y[0] + 'A') + k;
-        if (res1Char < 'A')
-        {
-            res1Char = (sysNum % 26 + 65) - y[0] + x[0] + k;
-            res2Int = res2Int + sysNum / 26;
-            k = -1;
-        }
-        else
-        {
-            k = 0;
-        }
+        k = -1;
+        res2Int += sysNum;
     }
     else
     {
-        res1Char = (sysNum % 26 + 65) - y[0] + x[0];
-        res2Int = res2Int + sysNum / 26;
-        k = -1;
+        k = 0;
     }
-
+    res1Char = res2Int % 26 + 'A';
+    res2Int /= 26;
     res = res1Char + std::to_string(res2Int);
     return k;
 }
